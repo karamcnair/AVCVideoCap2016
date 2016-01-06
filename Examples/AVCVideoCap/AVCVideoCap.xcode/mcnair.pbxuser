@@ -1,0 +1,155 @@
+// !$*UTF8*$!
+{
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Development;
+		activeExecutable = DADE2331149BE72500E5FF61 /* AVCVideoCap */;
+		activeTarget = 8D1107260486CEB800E47090 /* AVCVideoCap */;
+		codeSenseManager = DADE2346149BE74A00E5FF61 /* Code sense */;
+		executables = (
+			DADE2331149BE72500E5FF61 /* AVCVideoCap */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					1173,
+					20,
+					48.16259765625,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 345761573;
+			PBXWorkspaceStateSaveDate = 345761573;
+		};
+		perUserProjectItems = {
+			DADE233D149BE74A00E5FF61 /* PBXTextBookmark */ = DADE233D149BE74A00E5FF61 /* PBXTextBookmark */;
+			DADE2347149BF3D900E5FF61 /* PBXTextBookmark */ = DADE2347149BF3D900E5FF61 /* PBXTextBookmark */;
+			DADE2348149BF3D900E5FF61 /* PBXTextBookmark */ = DADE2348149BF3D900E5FF61 /* PBXTextBookmark */;
+			DADE2349149BF3D900E5FF61 /* PBXTextBookmark */ = DADE2349149BF3D900E5FF61 /* PBXTextBookmark */;
+		};
+		sourceControlManager = DADE2345149BE74A00E5FF61 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	29B97316FDCFA39411CA2CEA /* main.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1351, 714}}";
+			sepNavSelRange = "{2298, 0}";
+			sepNavVisRange = "{0, 2631}";
+		};
+	};
+	32CA4F630368D1EE00C91783 /* AVCVideoCap_Prefix.pch */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1351, 714}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 153}";
+		};
+	};
+	8D1107260486CEB800E47090 /* AVCVideoCap */ = {
+		activeExec = 0;
+		executables = (
+			DADE2331149BE72500E5FF61 /* AVCVideoCap */,
+		);
+	};
+	A1999A6206C44CE70040951A /* AVCVideoCapController.mm */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1351, 14183}}";
+			sepNavSelRange = "{12088, 26}";
+			sepNavVisRange = "{10643, 1814}";
+		};
+	};
+	DADE2331149BE72500E5FF61 /* AVCVideoCap */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = AVCVideoCap;
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
+	};
+	DADE233D149BE74A00E5FF61 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 32CA4F630368D1EE00C91783 /* AVCVideoCap_Prefix.pch */;
+		name = "AVCVideoCap_Prefix.pch: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 153;
+		vrLoc = 0;
+	};
+	DADE2345149BE74A00E5FF61 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	DADE2346149BE74A00E5FF61 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	DADE2347149BF3D900E5FF61 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 29B97316FDCFA39411CA2CEA /* main.m */;
+		name = "main.m: 40";
+		rLen = 0;
+		rLoc = 2298;
+		rType = 0;
+		vrLen = 2631;
+		vrLoc = 0;
+	};
+	DADE2348149BF3D900E5FF61 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A1999A6206C44CE70040951A /* AVCVideoCapController.mm */;
+		name = "AVCVideoCapController.mm: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 2813;
+		vrLoc = 0;
+	};
+	DADE2349149BF3D900E5FF61 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A1999A6206C44CE70040951A /* AVCVideoCapController.mm */;
+		name = "AVCVideoCapController.mm: 368";
+		rLen = 26;
+		rLoc = 12088;
+		rType = 0;
+		vrLen = 1814;
+		vrLoc = 10643;
+	};
+}

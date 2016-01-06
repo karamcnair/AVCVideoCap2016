@@ -1,0 +1,43 @@
+{
+    IBClasses = (
+        {
+            ACTIONS = {
+                CaptureButtonPushed = id; 
+                DeviceTableInteraction = id; 
+                endTapePrefsSheet = id; 
+                endTunerPrefsSheet = id; 
+                raiseTapePrefsSheet = id; 
+                raiseTunerPrefsSheet = id; 
+            }; 
+            CLASS = AVCVideoCapController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                CaptureButton = NSButton; 
+                CaptureStatus = NSTextField; 
+                Dropped = NSTextField; 
+                EMI = NSTextField; 
+                FileName = NSTextField; 
+                Overruns = NSTextField; 
+                PacketCount = NSTextField; 
+                RecordingStartAMPM = NSPopUpButton; 
+                RecordingStartDay = NSPopUpButton; 
+                RecordingStartHour = NSPopUpButton; 
+                RecordingStartMinute = NSPopUpButton; 
+                RecordingStartMonth = NSPopUpButton; 
+                RecordingStartYear = NSPopUpButton; 
+                availableDevices = NSTableView; 
+                enableChannelChangeButton = NSButton; 
+                enableTimerRecordingButton = NSButton; 
+                recordingTimeInMinutes = NSTextField; 
+                tapeRecordingMode = NSPopUpButton; 
+                tapeRecordingPrefsWindow = NSWindow; 
+                tunerChannel = NSTextField; 
+                tunerChannelDescriptionText = NSTextField; 
+                tunerRecordingPrefsWindow = NSWindow; 
+            }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }
+    ); 
+    IBVersion = 1; 
+}
