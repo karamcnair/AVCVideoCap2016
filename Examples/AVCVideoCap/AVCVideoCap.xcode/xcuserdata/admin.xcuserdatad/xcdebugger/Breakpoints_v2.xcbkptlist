@@ -10,11 +10,59 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AVCVideoCapController.mm"
-            timestampString = "473732748.882488"
+            timestampString = "473734242.302943"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "184"
-            endingLineNumber = "184"
+            startingLineNumber = "756"
+            endingLineNumber = "756"
+            landmarkName = "-endTunerPrefsSheet:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AVCVideoCapController.mm"
+            timestampString = "473734433.21746"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "749"
+            endingLineNumber = "749"
+            landmarkName = "-endTunerPrefsSheet:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AVCVideoCapController.mm"
+            timestampString = "473734451.315954"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "812"
+            endingLineNumber = "812"
+            landmarkName = "-tunerPrefsSheetDidEnd:returnCode:contextInfo:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AVCVideoCapController.mm"
+            timestampString = "473734509.244663"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "281"
+            endingLineNumber = "281"
             landmarkName = "-CaptureButtonPushed:"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,27 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AVCVideoCapController.mm"
-            timestampString = "473732756.733315"
+            timestampString = "473734680.820126"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "208"
-            endingLineNumber = "208"
-            landmarkName = "-CaptureButtonPushed:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AVCVideoCapController.mm"
-            timestampString = "473733649.321281"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "198"
-            endingLineNumber = "198"
+            startingLineNumber = "226"
+            endingLineNumber = "226"
             landmarkName = "-CaptureButtonPushed:"
             landmarkType = "5">
          </BreakpointContent>

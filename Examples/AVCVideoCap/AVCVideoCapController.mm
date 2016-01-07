@@ -236,7 +236,7 @@ NSDate *scheduledTunerRecordingStartDate;
                     // wait though - surely hour & minute are required...
                     // are they just going to be 0? Let's find out when this works.
                     // We need to stub out the damn AVC side of things.
-                    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:[NSDate date]];
+                    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitHour | NSCalendarUnitMinute fromDate:[NSDate date]];
                     
                     NSInteger day = [components day];
                     NSInteger month = [components month];
