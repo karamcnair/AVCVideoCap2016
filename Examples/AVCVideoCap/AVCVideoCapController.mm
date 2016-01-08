@@ -75,6 +75,7 @@ IOReturn MPEGPacketDataStoreHandler(UInt32 tsPacketCount,
                                     UInt32 fireWireTimeStamp);
 void MPEGReceiverMessageReceivedProc(UInt32 msg, UInt32 param1, UInt32 param2, void *pRefCon);
 
+
 // DV Receiver callbacks
 IOReturn DVFrameReceivedHandler (DVFrameReceiveMessage msg, DVReceiveFrame* pFrame, void *pRefCon);
 void DVReceiverMessageReceivedProc(UInt32 msg, UInt32 param1, UInt32 param2, void *pRefCon);
@@ -114,9 +115,11 @@ UInt32 captureStalledCount = 0;
 
 // KLM - ok, so these are obviously pretty important (and are the things that mean we only get
 // one recording session at a time.
-NSDate *currentDate;
-NSDate *tunerRecordingStopDate;
-NSDate *scheduledTunerRecordingStartDate;
+NSDate *currentDate = [[NSDate alloc] init];
+NSDate *tunerRecordingStopDate = [[NSDate alloc] init];
+NSDate *scheduledTunerRecordingStartDate = [[NSDate alloc] init];
+
+
 
 @implementation AVCVideoCapController
 
@@ -376,14 +379,15 @@ NSDate *scheduledTunerRecordingStartDate;
                         // Create receiver object
                         if (pCaptureDevice->isMPEGDevice)
                         {
-                            pAVCDeviceStream = pCaptureDevice->CreateMPEGReceiverForDevicePlug(0,
-                                                                                               nil, // We'll install the extended callback later (MPEGPacketDataStoreHandler),
-                                                                                               self,
-                                                                                               MPEGReceiverMessageReceivedProc,
-                                                                                               self,
-                                                                                               nil,
-                                                                                               kCyclesPerReceiveSegment,
-                                                                                               kNumReceiveSegments*2);
+                            pAVCDeviceStream =
+                              pCaptureDevice->CreateMPEGReceiverForDevicePlug(0,
+                                                            nil, // KLM filled in just in case . We'll install the extended callback later (MPEGPacketDataStoreHandler),
+                                                            self,
+                                                            MPEGReceiverMessageReceivedProc,
+                                                            self,
+                                                            nil,
+                                                            kCyclesPerReceiveSegment,
+                                                            kNumReceiveSegments*2);
                             if (pAVCDeviceStream == nil)
                             {
                                 [self abortCapture:@"Could not create MPEGReceiver"];
@@ -391,7 +395,7 @@ NSDate *scheduledTunerRecordingStartDate;
                             else
                             {
                                 // Install the extended MPEG receive callback
-                                pAVCDeviceStream->pMPEGReceiver->registerExtendedDataPushCallback(MPEGPacketDataStoreHandler,self);
+                                pAVCDeviceStream->pMPEGReceiver->registerExtendedDataPushCallback(MPEGPacketDataStoreHandler, self);
                                 lastEMIValue = 0xFFFFFFFF;
                                 
                                 pCaptureDevice->StartAVCDeviceStream(pAVCDeviceStream);
@@ -458,7 +462,10 @@ NSDate *scheduledTunerRecordingStartDate;
     }
     else if ((captureInProgress == true) && (captureMode == kCaptureModeTuner))
     {
-        NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:[NSDate date]];
+//        NSDateComponents *components = [[NSDateComponents init] alloc];
+//        
+//        components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:[NSDate date]];
+        NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear | NSCalendarUnitHour | NSCalendarUnitMinute fromDate:[NSDate date]];
         
         NSInteger day = [components day];
         NSInteger month = [components month];
@@ -466,15 +473,17 @@ NSDate *scheduledTunerRecordingStartDate;
         NSInteger hour = [components hour];
         NSInteger minute = [components minute];
         
-        currentDate = [NSDate date];
+        currentDate = [[NSDate date] retain];
         
         if (captureState == kCaptureStateTimerArmed)
         {
-            if ([currentDate compare:scheduledTunerRecordingStartDate] == NSOrderedAscending)
+            // KLM -- CRASH - scheduledTunerRecordingStartDate is a pointer that's not resolving to a real address.
+            // maybe if I swap them... (note -- should TOTALLY not work but... let's try.
+            if ([scheduledTunerRecordingStartDate compare:currentDate] == NSOrderedAscending)
             {
                 // Start recording here!!!!!!!
                 // Calculate when we should stop recording
-                tunerRecordingStopDate = [currentDate dateByAddingTimeInterval:[recordingTimeInMinutes intValue]*60];
+                tunerRecordingStopDate = [[currentDate dateByAddingTimeInterval:[recordingTimeInMinutes intValue]*60] retain];
                 
                 // First, make sure the tuner is powered on!
                 res = pCaptureDevice->GetPowerState(&powerState);
@@ -536,14 +545,12 @@ NSDate *scheduledTunerRecordingStartDate;
                 }
                 else
                 {
-                    pAVCDeviceStream = pCaptureDevice->CreateMPEGReceiverForDevicePlug(0,
-                                                                                       nil, // We'll install the extended callback later (MPEGPacketDataStoreHandler),
-                                                                                       self,
-                                                                                       MPEGReceiverMessageReceivedProc,
-                                                                                       self,
-                                                                                       nil,
-                                                                                       kCyclesPerReceiveSegment,
-                                                                                       kNumReceiveSegments*2);
+                    pAVCDeviceStream =
+                      pCaptureDevice->CreateMPEGReceiverForDevicePlug(0,
+                                                                      nil, // KLM filled in just in case . We'll install the extended callback later (MPEGPacketDataStoreHandler),
+                                                                      self, MPEGReceiverMessageReceivedProc, self, nil, kCyclesPerReceiveSegment, kNumReceiveSegments * 2);
+
+                    
                     if (pAVCDeviceStream == nil)
                     {
                         [self abortCapture:@"Could not create MPEGReceiver"];
@@ -645,9 +652,9 @@ NSDate *scheduledTunerRecordingStartDate;
                                                remainingHours,remainingMinutes,remainingSeconds]];
             }
         }
-        [components release];
+//        [components release];
     }
-    
+
     [availableDevices reloadData];
 }
 
@@ -749,6 +756,7 @@ NSDate *scheduledTunerRecordingStartDate;
     DateTimeRec timerDateAndTime;
     UInt32 timerTimeInSeconds;
     
+    currentDate = [[NSDate date] retain];
     
     // Make sure if timer recording is enabled, the specified time is not in the past
     if ([enableTimerRecordingButton state] == NSOnState)
@@ -775,16 +783,16 @@ NSDate *scheduledTunerRecordingStartDate;
         [components setMinute:[RecordingStartMinute indexOfSelectedItem]];
         [components setSecond:0];
         
-        
-        scheduledTunerRecordingStartDate = [[NSCalendar currentCalendar] dateFromComponents:components];
+        // is THIS just a pointer instead of a date?
+        scheduledTunerRecordingStartDate = [[[NSCalendar currentCalendar] dateFromComponents:components] retain];
         
         // KLM - this is just getting the timer date & time setting (which would be better off stored as an NSDate, I bet.)
         
-        currentDate = [NSDate date];
         
-        if ([currentDate compare:scheduledTunerRecordingStartDate] == NSOrderedAscending)
+        if ([currentDate compare:scheduledTunerRecordingStartDate] == NSOrderedDescending)
         {
-            NSRunAlertPanel(@"Error, Invalid Recording Time Specified",@"Specified record start time is in the past!",@"OK",nil,nil);
+            NSRunAlertPanel(@"Error, Invalid Recording Time Specified",@"Specified record start time is in the past!",@"OK",nil,nil);\
+            [components release];
             return;
         }
         
@@ -793,6 +801,7 @@ NSDate *scheduledTunerRecordingStartDate;
     }
     else
     {
+        // is this just a pointer then or a date?
         scheduledTunerRecordingStartDate = currentDate; // Start now!!!!
     }
     
@@ -800,7 +809,7 @@ NSDate *scheduledTunerRecordingStartDate;
     captureState = kCaptureStateTimerArmed;
     captureInProgress = true;
     
-    [tunerRecordingPrefsWindow orderOut:sender];
+//    [tunerRecordingPrefsWindow orderOut:sender];
     [NSApp endSheet:tunerRecordingPrefsWindow returnCode:1];
 }
 
@@ -810,6 +819,7 @@ NSDate *scheduledTunerRecordingStartDate;
 - (void) tunerPrefsSheetDidEnd:(NSWindow*) sheet returnCode:(int)returnCode contextInfo:(void*)contextInfo
 {
     [CaptureButton setTitle:kStopCaptureText];
+    [sheet orderOut:self];
 }
 
 //////////////////////////////////////////////////////
@@ -1072,6 +1082,7 @@ IOReturn MPEGPacketDataStoreHandler(UInt32 tsPacketCount,
     AVCVideoCapController *controller = (AVCVideoCapController*) pRefCon;
     
     // Set the EMI
+    // KLM THIS IS WHAT'S CRASHING IT.
     [controller setCurrentEMI:((isochHeader & 0x0000000C) >> 2)];
     
     // Increment packet count for progress display
@@ -1097,7 +1108,8 @@ IOReturn MPEGPacketDataStoreHandler(UInt32 tsPacketCount,
 //
 // MPEGReceiverMessageReceivedProc
 //
-//////////////////////////////////////////////////////////////////////
+////////
+//////////////////////////////////////////////////////////////
 void MPEGReceiverMessageReceivedProc(UInt32 msg, UInt32 param1, UInt32 param2, void *pRefCon)
 {
     AVCVideoCapController *controller = (AVCVideoCapController*) pRefCon;
@@ -1113,6 +1125,7 @@ void MPEGReceiverMessageReceivedProc(UInt32 msg, UInt32 param1, UInt32 param2, v
             break;
     };
 }
+
 
 //////////////////////////////////////////////////////////////////////
 //
