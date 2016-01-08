@@ -54,6 +54,7 @@ using namespace AVS;
 #define kMicroSecondsPerSecond 1000000
 #define kCaptureButtonText @"Capture From Device"
 #define kStopCaptureText @"Abort Capture Now"
+#define lowestYear 2016
 
 
 // KLM - all these callbacks are declared up here at the top but are implemented near the bottom.
@@ -250,7 +251,7 @@ NSDate *scheduledTunerRecordingStartDate = [[NSDate alloc] init];
                     [RecordingStartMonth selectItemAtIndex: (month - 1)];
                     [RecordingStartDay selectItemAtIndex: (day - 1)];
                     if  ((year > 2004) && (year < 2010))
-                        [RecordingStartYear selectItemAtIndex:(year-2005)];
+                        [RecordingStartYear selectItemAtIndex:(year-lowestYear)];
                     else
                         [RecordingStartYear selectItemAtIndex:0];
                     
@@ -764,7 +765,7 @@ NSDate *scheduledTunerRecordingStartDate = [[NSDate alloc] init];
         
         NSDateComponents *components = [[NSDateComponents alloc] init];
         
-        [components setYear:([RecordingStartYear indexOfSelectedItem]+2005)];
+        [components setYear:([RecordingStartYear indexOfSelectedItem]+lowestYear)];
         [components setMonth:([RecordingStartMonth indexOfSelectedItem]+1)];
         [components setDay:([RecordingStartDay indexOfSelectedItem]+1)];
         

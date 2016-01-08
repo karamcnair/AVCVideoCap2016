@@ -640,15 +640,18 @@
                     <popUpButton verticalHuggingPriority="750" id="318">
                         <rect key="frame" x="158" y="81" width="77" height="22"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <popUpButtonCell key="cell" type="push" title="2008" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="clipping" state="on" borderStyle="borderAndBezel" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="443" id="468">
+                        <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" controlSize="small" lineBreakMode="clipping" borderStyle="borderAndBezel" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" id="468">
                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="smallSystem"/>
                             <menu key="menu" title="OtherViews" id="305">
                                 <items>
-                                    <menuItem title="2005" id="329"/>
-                                    <menuItem title="2006" id="335"/>
-                                    <menuItem title="2007" id="330"/>
-                                    <menuItem title="2008" state="on" id="443"/>
+                                    <menuItem title="2016" id="329"/>
+                                    <menuItem title="2017" id="mhx-Ad-1UO">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                    </menuItem>
+                                    <menuItem title="2018" id="5TM-12-CjS">
+                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                    </menuItem>
                                 </items>
                             </menu>
                         </popUpButtonCell>
@@ -778,12 +781,12 @@
                     <popUpButton verticalHuggingPriority="750" id="429">
                         <rect key="frame" x="115" y="58" width="135" height="26"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <popUpButtonCell key="cell" type="push" title="Timer" bezelStyle="rounded" alignment="left" lineBreakMode="clipping" state="on" borderStyle="borderAndBezel" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="430" id="472">
+                        <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="clipping" borderStyle="borderAndBezel" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" id="472">
                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="menu"/>
                             <menu key="menu" title="OtherViews" id="433">
                                 <items>
-                                    <menuItem title="Timer" state="on" id="430"/>
+                                    <menuItem title="Timer" id="430"/>
                                     <menuItem title="Tape Control" id="431"/>
                                 </items>
                             </menu>
