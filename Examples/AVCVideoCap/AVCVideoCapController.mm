@@ -572,6 +572,7 @@ NSDate *scheduledTunerRecordingStartDate = [[NSDate alloc] init];
             {
                 
                 // NSTimeInterval remainingTime = [currentDate timeIntervalSinceDate:tunerRecordingStopDate]
+                //tunerRecordingStopDate timeIntervalSinceDate:currentDate
                 
                 // Update status message with remaining time until timer record starts
                 remainingSeconds = [scheduledTunerRecordingStartDate timeIntervalSinceDate:currentDate];
@@ -642,7 +643,7 @@ NSDate *scheduledTunerRecordingStartDate = [[NSDate alloc] init];
                 
                 // NSTimeInterval remainingTime = [currentDate timeIntervalSinceDate:tunerRecordingStopDate]
                 
-                remainingTimeInSeconds = [currentDate timeIntervalSinceDate:tunerRecordingStopDate];
+                remainingTimeInSeconds = [tunerRecordingStopDate timeIntervalSinceDate:currentDate];
                 remainingSeconds = remainingTimeInSeconds;
                 remainingHours = remainingSeconds / 3600;
                 remainingSeconds -= (remainingHours*3600);
